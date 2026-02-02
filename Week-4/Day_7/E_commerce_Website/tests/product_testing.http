@@ -1,0 +1,12 @@
+###Create product req
+POST http://localhost:4000/product-api/products
+Content-Type: application/json
+
+{
+    "productName":"Pencil",
+    "price": 10,
+    "brand":"Apsara"
+}
+
+###Find user by id
+GET http://localhost:4000/product-api/products/6980d1c4bd980715ba58319f

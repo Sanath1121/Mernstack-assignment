@@ -1,0 +1,65 @@
+###Read all users
+GET http://localhost:4000/user-api/users
+
+###Create User
+POST http://localhost:4000/user-api/users
+Content-Type: application/json
+
+{
+    "username":"Umesh",
+    "password":"123456",
+    "age":22
+    
+}
+
+###Find user by user id
+GET http://localhost:4000/user-api/users/697dba7d568a17649e8d7ab1
+
+
+###Update user data
+PUT http://localhost:4000/user-api/users/697dbc44b32a6ed1c0a190cb
+Content-Type: application/json
+
+{
+    "age":24
+}
+
+###Delete User
+DELETE http://localhost:4000/user-api/users/697dba7d568a17649e8d7ab1
+
+
+
+
+
+
+
+
+
+###Creating a new product
+POST http://localhost:4000/product-api/products
+Content-Type: application/json
+
+{
+    "product_name":"Mouse",
+    "price":1100,
+    "category":"Accessories",
+    "stock":45
+}
+
+###Read Products
+GET http://localhost:4000/product-api/products
+
+
+###Get product by id
+GET http://localhost:4000/product-api/products/697dced3082982e52d8da925
+
+###Update user data
+PUT http://localhost:4000/product-api/products/697dced3082982e52d8da925
+Content-Type: application/json
+
+{
+    "price":2000
+}
+
+###Delete User
+DELETE http://localhost:4000/product-api/products/697dced3082982e52d8da925

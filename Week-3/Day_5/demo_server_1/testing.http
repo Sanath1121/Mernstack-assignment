@@ -1,0 +1,42 @@
+GET http://localhost:3000/user-api/users
+
+###
+POST  http://localhost:3000/user-api/users
+Content-Type: application/json
+
+{
+    "id":500,
+    "name":"sai",
+    "age":20
+}
+
+###
+PUT http://localhost:3000/user-api/users
+Content-Type: application/json
+
+{
+    "id":500,
+    "name":"brad",
+    "age":19
+}
+
+###
+DELETE http://localhost:3000/user-api/users/500
+
+###
+GET http://127.0.0.1:3000/product-api/products
+
+###
+GET http://127.0.0.1:3000/product-api/products-id/2
+
+###
+GET http://127.0.0.1:3000/product-api/products-brand/realme
+
+###
+POST http://127.0.0.1:3000/product-api/products
+
+###
+PUT http://127.0.0.1:3000/product-api/products
+
+###
+DELETE http://127.0.0.1:3000/product-api/products/14

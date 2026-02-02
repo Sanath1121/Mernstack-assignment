@@ -1,0 +1,7 @@
+##GET http://localhost:4000/user
+
+##POST http://localhost:4000/user
+
+##PUT http://localhost:4000/user/id
+
+##DELETE http://localhost:4000/user/id

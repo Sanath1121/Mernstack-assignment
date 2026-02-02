@@ -1,0 +1,150 @@
+================================================================================
+                    FUNCTION PARAMETER REFERENCE
+================================================================================
+
+QUICK OVERVIEW
+================================================================================
+
+cart.js
+    addToCart(productId, quantity) | updateQuantity(productId, newQuantity)
+    getCartItems() | getCartTotal() | clearCart()
+
+product.js
+    getProductById(id) | getAllProducts() | getProductsByCategory(category)
+    searchProducts(query) | checkStock(productId, quantity) | reduceStock(productId, quantity)
+
+discount.js
+    validateCoupon(couponCode, cartTotal, cartItems) | calculateDiscount(couponCode, cartTotal)
+    applyDiscount(cartTotal, couponCode, cartItems)
+
+payment.js
+    processPayment(paymentMethod, couponCode) | validatePaymentMethod(method) | generateOrderId()
+
+================================================================================
+
+DETAILED REFERENCE
+================================================================================
+================================================================================
+
+addToCart(productId, quantity)
+    - productId: number (product ID to add)
+    - quantity: number (quantity to add)
+    - Returns: string ("Success" or "Error")
+    
+updateQuantity(productId, newQuantity)
+    - productId: number (product ID to update)
+    - newQuantity: number (new quantity value)
+    - Returns: void
+
+getCartItems()
+    - Parameters: NONE
+    - Returns: array of cart items
+
+getCartTotal()
+    - Parameters: NONE
+    - Returns: number (total price)
+
+clearCart()
+    - Parameters: NONE
+    - Returns: null
+
+
+================================================================================
+product.js
+================================================================================
+
+getProductById(id)
+    - id: number (product ID)
+    - Returns: object (product details)
+
+getAllProducts()
+    - Parameters: NONE
+    - Returns: array (all products)
+
+getProductsByCategory(category)
+    - category: string (category name)
+    - Returns: array (filtered products)
+
+searchProducts(query)
+    - query: string (search term)
+    - Returns: object (product found)
+
+checkStock(productId, quantity)
+    - productId: number (product ID)
+    - quantity: number (quantity to check)
+    - Returns: boolean (true if available)
+
+reduceStock(productId, quantity)
+    - productId: number (product ID)
+    - quantity: number (quantity to reduce)
+    - Returns: number (new stock value)
+
+
+================================================================================
+discount.js
+================================================================================
+
+validateCoupon(couponCode, cartTotal, cartItems)
+    - couponCode: string (coupon code)
+    - cartTotal: number (total cart amount)
+    - cartItems: array (items in cart)
+    - Returns: boolean (true if valid)
+
+calculateDiscount(couponCode, cartTotal)
+    - couponCode: string (coupon code)
+    - cartTotal: number (total amount)
+    - Returns: number (discount amount)
+
+applyDiscount(cartTotal, couponCode, cartItems)
+    - cartTotal: number (total cart amount)
+    - couponCode: string (coupon code)
+    - cartItems: array (items in cart)
+    - Returns: object (discount details)
+
+
+================================================================================
+payment.js
+================================================================================
+
+processPayment(paymentMethod, couponCode)
+    - paymentMethod: string (card/upi/cod)
+    - couponCode: string (optional, default: null)
+    - Returns: object (order summary)
+
+validatePaymentMethod(method)
+    - method: string (payment method)
+    - Returns: boolean (true if valid)
+
+generateOrderId()
+    - Parameters: NONE
+    - Returns: string (unique order ID)
+
+
+================================================================================
+QUICK USAGE EXAMPLES
+================================================================================
+
+// From cart.js
+addToCart(1, 2);
+getCartItems();
+getCartTotal();
+clearCart();
+
+// From product.js
+getProductById(3);
+getAllProducts();
+getProductsByCategory('electronics');
+checkStock(1, 5);
+reduceStock(1, 5);
+
+// From discount.js
+validateCoupon('WELCOME10', 5000, cartItems);
+calculateDiscount('WELCOME10', 5000);
+applyDiscount(5000, 'WELCOME10', cartItems);
+
+// From payment.js
+processPayment('card', 'WELCOME10');
+validatePaymentMethod('upi');
+generateOrderId();
+
+================================================================================

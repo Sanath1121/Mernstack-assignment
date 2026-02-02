@@ -1,0 +1,4 @@
+Making authenticator request:
+
+    1) When client application makes a request after successful login, the http only cookie will be attached to every request automatically.
+    2) The middleware in express can extract the cookie from request using cookie-parser module 

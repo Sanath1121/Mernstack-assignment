@@ -1,0 +1,14 @@
+create:
+db.createCollection("name")
+
+Insert:
+db.name.insertOne({})
+
+update:
+db.name.updateOne({},{$set{}})  //Updates the data
+db.name.updateOne({},{$unset{}})  //Deletes the specified data
+
+
+Array Operations:
+
+Insert:
