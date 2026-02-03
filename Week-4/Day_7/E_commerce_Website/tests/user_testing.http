@@ -3,15 +3,16 @@ POST http://localhost:4000/user-api/users
 Content-Type: application/json
 
 {
-    "username":"Sanath",
-    "password":"123456",
+    "username":"Jaswanth",
+    "password":"123456789",
     "email":"sanath@gmail.com",
     "cart":[]
+    
 }   
 
 ###Req to add product to cart
-PUT http://localhost:4000/user-api/users/userid/6980729a6fbd5242f8df78b9/productid/69806b5f3ead7e7d49951dbb
+PUT http://localhost:4000/user-api/user-cart/user-id/6981a88962c8223314e02c89/product-id/69806b5f3ead7e7d49951dbb
 
 
 ###Find user by id
-GET http://localhost:4000/user-api/users/6980729a6fbd5242f8df78b9
+GET http://localhost:4000/user-api/users/6981a88962c8223314e02c89

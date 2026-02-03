@@ -1,10 +1,16 @@
 import exp from "express"
 import { Schema,model } from "mongoose"
+import mongoose from "mongoose"
 const cartSchema=new Schema({
     product:{
         type:Schema.Types.ObjectId,
         ref: 'product' //name of product model
+    },
+    quantity:{
+        type:Number,
+        default:1
     }
+
 })
 const userSchema=new Schema({
         username:{
@@ -16,16 +22,21 @@ const userSchema=new Schema({
         },
         password:{
             type:String,
-            required:[true,"Password is required"]
+            required:[true,"Password is required"],
+            minLength:[8,"Length of password must be minimum 8"]
         },
         email:{
             type:String,
             required:[true,"Email is required"],
-            unique:true
+            unique:[true,"dup user"]
         },
         cart:{
-            type:[cartSchema]
-        }
+            type:[cartSchema],
+        },
+        
+        
+            
+        
 },
 {
     strict:"throw",
