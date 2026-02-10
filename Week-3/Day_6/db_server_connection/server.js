@@ -37,6 +37,7 @@ app.use('/product-api',productApp)
 
 function errorhandler(err,req,res,next){
     res.json({message:"Error",payload:err});
+    next();
 }
 app.use(errorhandler);
 

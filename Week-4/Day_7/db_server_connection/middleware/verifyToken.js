@@ -8,10 +8,9 @@ export function verifyToken(err,req,res,next)
     let signedToken=req.cookies.token;
     if(!signedToken){
         return res.status(401).json({message:"Login first"})
-    next()
     }
     //verify token(decode)
-    let decodedToken= jwt.verify(token,"secret");
+    let decodedToken= jwt.verify(signedToken,"secret");
     console.log("Decoded token",decodedToken);
     next();
 }

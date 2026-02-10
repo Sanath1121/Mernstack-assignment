@@ -15,6 +15,8 @@ userApp.get('/users',async(req,res)=>{
 
 })
 
+
+//hash password
 userApp.post('/users',async(req,res)=>{
     // let user=await userModel.insertOne(req);
     // res.status(100).json({message:"User entered",payload:user})

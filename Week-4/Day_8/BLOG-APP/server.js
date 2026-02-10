@@ -4,17 +4,19 @@ import {connect} from "mongoose";
 import { userRoute } from "./APIs/userAPI.js";
 import { authorRoute } from "./APIs/authorAPI.js";
 import { adminRoute } from "./APIs/adminAPI.js";
+import { commonRouter } from "./APIs/commonAPI.js";
+import cookieParser from "cookie-parser";
 config() //process.env
 
 const app=exp();
 //body parser middleware
 app.use(exp.json())
-
+app.use(cookieParser())
 //connect apis
 app.use("/user-api",userRoute);
 app.use("/admin-api",adminRoute);
 app.use("/author-api",authorRoute);
-
+app.use("/common-api",commonRouter)
 
 //connect to database
 const connectDb=async()=>{
@@ -31,10 +33,15 @@ const connectDb=async()=>{
 
 connectDb();
 
-//error handling middleware
-app.use((err,req,res,next)=>{
-    console.log("Error:",err);
-    res.json({message:"Error",error:err.message});
-    next();
+// dealing with invalid path
+app.use((req,res,next)=>{
+    res.json({message:`${req.url} is an invalid url`});
 })
+
+//error handling middleware dealing with invalid path
+// app.use((err,req,res,next)=>{
+//     console.log("Error:",err);
+//     res.json({message:"Error",error:err.message});
+//     next();
+// })
 
