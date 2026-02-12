@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ+Basic+Guides&display=swap');
 h1{
     color: rgb(152, 101, 24);
-    text-align: center;
+    text-align: right;
     font-size: xx-50px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family:"Playwrite NZ Basic Guides", cursive;
     background-color:black;
     padding: 50px;
+}
+
+img{
+    display: block;
+    margin: auto;
 }
