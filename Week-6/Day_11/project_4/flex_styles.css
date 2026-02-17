@@ -1,0 +1,54 @@
+/* relative, absolute, static, fixed, sticky */
+
+/* relative ---> Relative to current position */
+/* absolute ---> relative to its positioned parent (removed from document flow and can be placed anywhere you want) */
+
+
+
+*{
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 2000px;
+}
+
+.parent{
+    max-width: 700px;
+    height: 500px;
+    margin: auto;
+    margin-top: 150px;
+    border: 2px solid black;
+    position: relative;
+    /* Flex Container */
+    display: flex;
+    /* Flex direction */
+    flex-direction: row;
+    /* Horizontally */
+    justify-content: space-evenly;
+    /* Vertical */
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.child{
+    width: 100px;
+    height: 100px;
+}
+
+.child1{
+    background-color: red;
+    flex-grow: 0;
+}
+
+.child2{
+    background-color: green;
+    flex-grow: 0;
+}
+
+.child3{
+    background-color: blue;
+}

@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 2000px;
+}
+p{
+    margin: auto;
+}
+
+.batman{
+    position: relative;
+    margin: auto;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+.logo{
+    position: absolute;
+    
+    width:50px; 
+    height:50px;
+}
+
+h5{
+    
+    border-radius: 5px;
+    display: block;
+    background: darkblue;
+    color: aliceblue;
+    width: 11%;
+    padding: 1px;
+    margin: auto;
+}
+div{
+    text-align: center; 
+    width: 400px;
+    height: auto;
+    border: 5px solid black;
+    padding: 10px 10px 10px 10px;
+    margin: auto;
+    margin-top: 30px;
+    
+}
