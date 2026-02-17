@@ -13,3 +13,4 @@
 6)Media queries
 7)Flexbox
 8)Grid
+divide into divs
