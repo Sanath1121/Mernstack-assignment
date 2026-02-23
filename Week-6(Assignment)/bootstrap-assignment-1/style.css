@@ -63,3 +63,8 @@ h2{
     position: absolute;
     left:80px;
 }
+
+a{
+    text-decoration: none;
+    color: white;
+}
