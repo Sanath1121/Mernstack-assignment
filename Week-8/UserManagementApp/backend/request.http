@@ -1,0 +1,23 @@
+POST http://localhost:4000/user-api/users
+Content-Type: application/json
+
+{
+    "name":"Sanath",
+    "email":"Sanath@gmail.com",
+    "dateOfBirth":"1999-01-01",
+    "mobileNumber":"1234567890"
+}
+
+
+###read user
+GET http://localhost:4000/user-api/users
+
+
+###read user by id
+GET http://localhost:4000/user-api/users/69a69bc681d51fb5b5762210
+
+###Delete user
+DELETE http://localhost:4000/user-api/users/69a69bc681d51fb5b5762210
+
+###Activate user
+PATCH http://localhost:4000/user-api/users/69a69bc681d51fb5b5762210

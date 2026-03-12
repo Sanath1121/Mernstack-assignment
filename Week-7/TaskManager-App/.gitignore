@@ -7,22 +7,9 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Dependencies
 node_modules
-
-# Build output
 dist
 dist-ssr
-
-# Test coverage
-coverage
-
-# Environment files
-.env
-.env.*
-!.env.example
-
-# Local overrides
 *.local
 
 # Editor directories and files
@@ -30,9 +17,6 @@ coverage
 !.vscode/extensions.json
 .idea
 .DS_Store
-.parcel-cache
-.cache
-Thumbs.db
 *.suo
 *.ntvs*
 *.njsproj
