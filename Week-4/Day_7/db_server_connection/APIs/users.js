@@ -1,9 +1,11 @@
 import exp from "express";
 import {userModel} from '../models/usersModel.js'
-export const userApp=exp.Router();
 import {hash,compare} from "bcryptjs";
 import jwt from "jsonwebtoken"
 import { verifyToken } from "../middleware/verifyToken.js";
+
+export const userApp=exp.Router();
+
 //USER api routes
 
 //create user

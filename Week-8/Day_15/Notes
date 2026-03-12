@@ -1,0 +1,3 @@
+State Management means sharing state accross application and achive sync in state across application.
+
+upLiftting state means moving state up to the common parent component so that it can be shared across multiple child components.

@@ -1,0 +1,10 @@
+{
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "tailwindCSS.experimental.configFile": {
+    "Context-Demo/src/index.css": "Context-Demo/**",
+    "React-Products-App_Demo/src/index.css": "React-Products-App_Demo/**",
+    "Routing/src/index.css": "Routing/**"
+  }
+}
