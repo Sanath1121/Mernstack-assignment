@@ -1,38 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import {createBrowserRouter, RouterProvider} from 'react-router'
-import Header from './components/Header'
-import { Outlet } from 'react-router'
+import React from 'react'
+import { createBrowserRouter, RouterProvider } from "react-router"
 import RootLayout from './components/RootLayout'
-import UsersList from './components/UsersList'
+import Home from './components/Home'
 import AddUser from './components/AddUser'
+import UsersList from './components/UsersList'
 import User from './components/User'
 
 function App() {
-  const routeObj=createBrowserRouter([
+  const routerObj = createBrowserRouter([
     {
       path:'/',
-      element:<RootLayout/>,
+      element: <RootLayout />,
       children:[
         {
-          path:'/',
-          element:<UsersList/>
+          path: '',
+          element: <Home/>
         },
         {
-          path:'/add',
-          element:<AddUser/>
+          path: 'adduser',
+          element: <AddUser />
         },
         {
-          path:'/user/:id',
-          element:<User/>
+          path: 'userslist',
+          element: <UsersList />
+        },
+        {
+          path: 'user/:id',
+          element: <User/>
         }
       ]
     }
   ])
-  return (
-    <RouterProvider router={routeObj}/>
-  )
-}
 
+  return <RouterProvider router={routerObj} />
+}
 export default App

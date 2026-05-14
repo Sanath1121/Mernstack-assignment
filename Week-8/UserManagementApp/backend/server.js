@@ -1,60 +1,70 @@
-//create http Server
-import exp from "express";
-import {connect} from "mongoose";
-import { userApp } from "./api/userAPI.js";
-import cors from "cors";
-config();
+import exp from 'express'
+import { config } from 'dotenv'
+import { connect } from 'mongoose'
+import { userApp } from './APIs/UserAPI.js'
+import cors from 'cors'
 
-app.use(cors());
-const app=exp()
-const port=4000;
+// read environment variables
+config()
 
-//connect db
-async function connectDB(){
-    try{
-        await connect('mongodb://localhost:27017/User-Management')
-        console.log("DB connection success");
-        app.listen(port,()=>console.log(`app is listening on port &{port}`))
-    }
-    catch(err){
-        console.log("DB connection failed",err);
-    }
+// create server
+export const app = exp()
+
+// CORS configuration
+const corsOptions = {
+  origin: 'http://localhost:5174',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }
-connectDB();
+app.use(cors(corsOptions))
 
+// body parser
 app.use(exp.json())
 
-app.use('/user-api',userApp) //to use this router in server.js we need to export it and import in server.js and use it as middleware
+// forwarding routes
+app.use('/user-api', userApp)
 
-//add error handling middleware
-app.use((err,req,res,next)=>{
-    console.log("Error in middleware",err);
-    res.status(500).json({message:"Something went wrong",description:err.message})
-});
+// connecting to DB
+const connectDB = async () => {
+  try {
+    await connect(process.env.DB_URL)
+    console.log("DB connection is successful!")
 
+    const port = process.env.PORT || 5000
+    app.listen(port, () => {
+      console.log(`Server is listening on port ${port}`)
+    })
+  }
+  catch (err) {
+    console.log("DB connection error", err.message)
+  }
+}
 
+connectDB()
+
+// error handling
 app.use((err, req, res, next) => {
-  // Mongoose validation error
   if (err.name === "ValidationError") {
     return res.status(400).json({
       message: "Validation failed",
-      errors: err.errors,
-    });
+      errors: err.errors
+    })
   }
-  // Invalid ObjectId
+
   if (err.name === "CastError") {
     return res.status(400).json({
-      message: "Invalid ID format",
-    });
+      message: "Invalid ID format"
+    })
   }
-  // Duplicate key
+
   if (err.code === 11000) {
     return res.status(409).json({
-      message: "Duplicate field value",
-    });
+      message: "Duplicate field value"
+    })
   }
+
   res.status(500).json({
-    message: "Internal Server Error",
-  });
-  
-});
+    message: "Internal Server Error"
+  })
+})
