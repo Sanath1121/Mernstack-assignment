@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router'
+import { buildApiUrl } from '../config/api'
 
 function User() {
   const { id } = useParams()
@@ -11,7 +12,7 @@ function User() {
   useEffect(() => {
     async function getUser() {
       try {
-        const res = await fetch(`http://localhost:5000/user-api/users/${id}`, {
+        const res = await fetch(buildApiUrl(`/user-api/users/${id}`), {
           method: 'GET'
         })
         const data = await res.json()

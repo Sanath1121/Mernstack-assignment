@@ -1,5 +1,5 @@
 import exp from 'express'
-import { UserModel } from '../Models/UserModel.js'
+import { UserModel } from '../models/userModel.js'
 
 //create min server
 export const userApp = exp.Router()

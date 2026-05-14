@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
+import { buildApiUrl } from '../config/api'
 
 function UsersList() {
   const [users, setUsers] = useState([])
@@ -10,7 +11,7 @@ function UsersList() {
   useEffect(() => {
     async function getUsers() {
       try {
-        const res = await fetch('http://localhost:5000/user-api/users', {
+        const res = await fetch(buildApiUrl('/user-api/users'), {
           method: 'GET'
         })
         if (res.ok) {

@@ -10,9 +10,20 @@ config()
 // create server
 export const app = exp()
 
+const allowedOrigins = (process.env.CORS_ORIGIN || 'http://localhost:5173,http://localhost:5174')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean)
+
 // CORS configuration
 const corsOptions = {
-  origin: 'http://localhost:5174',
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true)
+    }
+
+    return callback(new Error('CORS policy: origin not allowed'))
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
@@ -21,6 +32,14 @@ app.use(cors(corsOptions))
 
 // body parser
 app.use(exp.json())
+
+app.get('/', (req, res) => {
+  res.json({ message: 'User Management API is running' })
+})
+
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' })
+})
 
 // forwarding routes
 app.use('/user-api', userApp)
@@ -61,6 +80,12 @@ app.use((err, req, res, next) => {
   if (err.code === 11000) {
     return res.status(409).json({
       message: "Duplicate field value"
+    })
+  }
+
+  if (err.message?.includes('CORS policy')) {
+    return res.status(403).json({
+      message: err.message
     })
   }
 

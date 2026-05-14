@@ -2,6 +2,7 @@ import React from 'react'
 import {useForm} from 'react-hook-form'
 import {useState} from 'react'
 import {useNavigate} from 'react-router'
+import { buildApiUrl } from '../config/api'
 
 function AddUser() {
   const [loading, setLoading] = useState(false)
@@ -9,7 +10,7 @@ function AddUser() {
   const onUserCreate = async (userObj) =>{
     setLoading(true)
     try {
-      const response = await fetch('http://localhost:5000/user-api/users', {
+      const response = await fetch(buildApiUrl('/user-api/users'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
