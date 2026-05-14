@@ -12,7 +12,11 @@ const connectToDatabase = async () => {
 }
 
 export default async function handler(req, res) {
-  await connectToDatabase()
+  try {
+    await connectToDatabase()
+  } catch (err) {
+    return res.status(500).json({ message: 'Database connection failed', error: err.message })
+  }
 
   const { id } = req.query
 

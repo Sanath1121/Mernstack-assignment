@@ -7,7 +7,7 @@
 3. Build command: `npm run build`.
 4. Output directory: `dist`.
 5. Add environment variable:
-   - `VITE_API_BASE_URL=https://<your-render-backend-url>`
+   - `VITE_API_BASE_URL=https://<your-backend-vercel-url>`
 6. Deploy.
 
 `frontend/vercel.json` includes SPA rewrites so React Router routes work after refresh.
