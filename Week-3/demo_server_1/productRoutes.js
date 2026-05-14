@@ -16,5 +16,3 @@ productApp.get("/products",(req,res)=>{})
 productApp.get("/products",(req,res)=>{})
 
 productApp.get("/products",(req,res)=>{})
-
- 

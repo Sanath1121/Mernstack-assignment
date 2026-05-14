@@ -1,8 +1,8 @@
 //create HTTP server
     //Import express
 import exp from "express"
-import { userApp } from "./userAPI.js"
-import { productApp } from "./productAPI.js"
+import { userApp } from "./userRoutes.js"
+import { productApp } from "./productRoutes.js"
 //Create server
 const app = exp()
 

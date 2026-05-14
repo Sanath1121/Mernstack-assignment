@@ -1,7 +1,7 @@
 import exp from "express";
 import {connect} from "mongoose";
-import {userApp} from './APIs/users.js';
-import {productApp} from './APIs/product.js';
+import {userApp} from './APIs/userApi.js';
+import {productApp} from './APIs/productApi.js';
 
 const app=exp();
 const port=4000;
