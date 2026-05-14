@@ -12,16 +12,16 @@
 
 `frontend/vercel.json` includes SPA rewrites so React Router routes work after refresh.
 
-## Backend (Render)
+## Backend (Vercel serverless functions)
 
-1. Create a new Web Service from the `backend` folder.
-2. Build command: `npm install`.
-3. Start command: `npm start`.
-4. Add environment variables:
-   - `DB_URL=<your-mongodb-connection-string>`
-   - `PORT=10000` (optional; Render sets PORT automatically)
-   - `CORS_ORIGIN=https://<your-vercel-frontend-url>,http://localhost:5173,http://localhost:5174`
-5. Deploy.
+This project now exposes the backend as Vercel serverless functions from the `backend` folder. Functions are available under `/user-api/*` (rewritten to `/api/user-api/*`).
+
+1. Import the `backend` folder as a separate Vercel project (or as a monorepo root with configured `scope`).
+2. Vercel will deploy serverless functions found under `backend/api`.
+3. Add environment variables in Vercel for the backend project:
+   - `DB_URL` = your MongoDB connection string
+   - `CORS_ORIGIN` = comma-separated allowed origins (example: `https://your-frontend.vercel.app,http://localhost:5173`)
+4. No long-running `start` process is required; functions run on demand.
 
 Health check endpoint: `/health`
 

@@ -1,0 +1,61 @@
+import mongoose from 'mongoose'
+import { UserModel } from '../../models/userModel.js'
+
+const connectToDatabase = async () => {
+  if (mongoose.connection.readyState === 1) return
+  if (global.__MONGO_CONNECT_PROMISE) {
+    await global.__MONGO_CONNECT_PROMISE
+    return
+  }
+  global.__MONGO_CONNECT_PROMISE = mongoose.connect(process.env.DB_URL)
+  await global.__MONGO_CONNECT_PROMISE
+}
+
+export default async function handler(req, res) {
+  await connectToDatabase()
+
+  const { id } = req.query
+
+  if (req.method === 'GET') {
+    try {
+      const user = await UserModel.findOne({ _id: id, status: true })
+      if (!user) return res.status(404).json({ message: 'User not found' })
+      return res.status(200).json({ message: 'User found', payload: user })
+    } catch (err) {
+      return res.status(400).json({ message: 'Invalid ID', error: err.message })
+    }
+  }
+
+  if (req.method === 'PUT') {
+    try {
+      const updated = await UserModel.findByIdAndUpdate(id, { $set: req.body }, { new: true })
+      if (!updated) return res.status(404).json({ message: 'User not found' })
+      return res.status(200).json({ message: 'User Updated', payload: updated })
+    } catch (err) {
+      return res.status(400).json({ message: 'Update failed', error: err.message })
+    }
+  }
+
+  if (req.method === 'PATCH') {
+    try {
+      const activated = await UserModel.findByIdAndUpdate(id, { $set: { status: true } }, { new: true })
+      if (!activated) return res.status(404).json({ message: 'User not found' })
+      return res.status(200).json({ message: 'User Activated', payload: activated })
+    } catch (err) {
+      return res.status(400).json({ message: 'Activate failed', error: err.message })
+    }
+  }
+
+  if (req.method === 'DELETE') {
+    try {
+      const deleted = await UserModel.findByIdAndUpdate(id, { $set: { status: false } }, { new: true })
+      if (!deleted) return res.status(404).json({ message: 'User not found' })
+      return res.status(200).json({ message: 'User removed' })
+    } catch (err) {
+      return res.status(400).json({ message: 'Delete failed', error: err.message })
+    }
+  }
+
+  res.setHeader('Allow', 'GET,PUT,PATCH,DELETE')
+  res.status(405).end(`Method ${req.method} Not Allowed`)
+}
