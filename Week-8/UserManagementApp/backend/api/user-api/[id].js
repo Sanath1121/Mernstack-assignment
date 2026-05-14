@@ -12,6 +12,23 @@ const connectToDatabase = async () => {
 }
 
 export default async function handler(req, res) {
+  // CORS preflight handling — respond to OPTIONS before connecting to DB
+  const allowed = (process.env.CORS_ORIGIN || 'http://localhost:5173,http://localhost:5174')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean)
+  const origin = req.headers.origin
+  const echo = (!origin || allowed.includes(origin)) ? (origin || allowed[0]) : null
+  if (echo) {
+    res.setHeader('Access-Control-Allow-Origin', echo)
+    res.setHeader('Access-Control-Allow-Credentials', 'true')
+    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS')
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+  }
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end()
+  }
+
   try {
     await connectToDatabase()
   } catch (err) {
