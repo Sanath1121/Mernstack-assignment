@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     .map((s) => s.trim())
     .filter(Boolean)
   
-  const origin = req.headers.origin
+  const { origin } = req.headers
   const echo = origin || allowed[0]
   res.setHeader('Access-Control-Allow-Origin', echo)
   res.setHeader('Access-Control-Allow-Credentials', 'true')
@@ -35,9 +35,14 @@ export default async function handler(req, res) {
   } catch (err) {
     return res.status(500).json({ message: 'Database connection failed', error: err.message })
   }
-  // ... rest of handler
 
-  const { id } = req.query
+  const { url } = req
+  const { pathname } = new URL(url, 'http://localhost')
+  const id = decodeURIComponent(pathname.split('/').filter(Boolean).pop() || '')
+
+  if (!id) {
+    return res.status(400).json({ message: 'Missing user id' })
+  }
 
   if (req.method === 'GET') {
     try {
