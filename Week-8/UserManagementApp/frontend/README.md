@@ -1,3 +1,24 @@
+# Frontend — UserManagementApp
+
+Brief React + Vite frontend for the User Management App.
+
+Prerequisites
+- Node 18+ and npm
+
+Quick start (local)
+- Install: `npm install`
+- Create env: copy `.env.example` to `.env.local` and set `VITE_API_BASE_URL` (no trailing slash)
+- Dev server: `npm run dev`
+- Build: `npm run build`
+- Preview production build: `npm run preview`
+
+Deployment (Vercel)
+- Set Vercel project to this repository's `frontend` folder (or connect via monorepo settings).
+- Output directory: `dist`
+- Add environment variable `VITE_API_BASE_URL` pointing to your backend URL (e.g. `https://<your-backend>.vercel.app`)
+
+Notes
+- If you see CORS errors in the browser, confirm the backend `CORS_ORIGIN` includes the frontend domain (no trailing slash).
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
