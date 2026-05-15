@@ -12,7 +12,7 @@ function User() {
   useEffect(() => {
     async function getUser() {
       try {
-        const res = await fetch(buildApiUrl(`/user-api/users/${id}`), {
+        const res = await fetch(buildApiUrl(`/user-api/${id}`), {
           method: 'GET'
         })
         const data = await res.json()
