@@ -19,15 +19,11 @@ export default async function handler(req, res) {
     .filter(Boolean)
   
   const origin = req.headers.origin
-  const isAllowed = !origin || allowed.includes(origin)
-  
-  // Always set CORS headers for preflight
-  if (isAllowed) {
-    res.setHeader('Access-Control-Allow-Origin', origin || allowed[0])
-    res.setHeader('Access-Control-Allow-Credentials', 'true')
-    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS')
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-  }
+  const echo = origin || allowed[0]
+  res.setHeader('Access-Control-Allow-Origin', echo)
+  res.setHeader('Access-Control-Allow-Credentials', 'true')
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
   
   // Respond to preflight immediately
   if (req.method === 'OPTIONS') {
