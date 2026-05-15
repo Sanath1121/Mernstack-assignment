@@ -36,8 +36,8 @@ export default async function handler(req, res) {
     return res.status(500).json({ message: 'Database connection failed', error: err.message })
   }
 
-  const { url } = req
-  const { pathname } = new URL(url, 'http://localhost')
+  const requestUrl = req.url || ''
+  const { pathname } = requestUrl ? new URL(requestUrl, 'http://localhost') : { pathname: '' }
   const id = decodeURIComponent(pathname.split('/').filter(Boolean).pop() || '')
 
   if (!id) {
