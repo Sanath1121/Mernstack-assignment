@@ -1,33 +1,33 @@
-# UserManagementApp (Blogg-app)
+# User Management App
 
-Monorepo for the User Management App. Contains a React + Vite frontend and a Vercel serverless backend (Mongoose + MongoDB).
+A modern web application for managing user data with an intuitive interface and reliable backend service.
 
-Repository layout
-- `frontend/` — React + Vite SPA
-- `backend/` — Vercel serverless functions under `backend/api/`
+## Overview
 
-Local development
-1. Backend (in terminal A)
-   - `cd backend`
-   - `npm install`
-   - Copy `.env.example` → `.env` and set `DB_URL`, `CORS_ORIGIN`
-   - `vercel dev` (requires `vercel` CLI and login)
+**User Management App** is a full-stack application that enables users to view, create, and manage user information. The application features a responsive frontend interface and a robust API backend, both deployed and maintained on Vercel for seamless scalability and performance.
 
-2. Frontend (in terminal B)
-   - `cd frontend`
-   - `npm install`
-   - Copy `.env.example` → `.env.local` and set `VITE_API_BASE_URL` to the backend URL (for local dev `http://localhost:3000` when using `vercel dev`)
-   - `npm run dev`
+## Key Features
 
-Deployment
-- Deploy frontend and backend separately to Vercel (two projects), or configure monorepo deployment.
-- Ensure Vercel environment variables are set for both projects:
-  - Backend: `DB_URL`, `CORS_ORIGIN`
-  - Frontend: `VITE_API_BASE_URL`
+- **User Directory** — View and browse all users in the system
+- **User Creation** — Add new users with detailed information
+- **User Management** — Edit and delete user records
+- **Responsive Design** — Works seamlessly on desktop and mobile devices
+- **API Integration** — RESTful API for all user operations
 
-Common issues
-- CORS preflight failures: ensure `CORS_ORIGIN` includes the exact frontend origin and has no trailing slash.
-- 401/Authentication pages: if a backend deployment returns Vercel auth page, remove project protection or use a bypass token during testing.
+## Project Structure
 
-Want more?
-- I can add run scripts, a CONTRIBUTING.md, or a `make`/script to run both services locally. Tell me which you'd prefer.
+The application is organized as a monorepo with two main components:
+
+- **Frontend** — React-based single-page application (SPA)
+- **Backend** — Serverless API with database integration
+
+## Getting Started
+
+To learn more about setting up and deploying this application, refer to the dedicated README files:
+
+- [Frontend Setup & Deployment](./frontend/README.md)
+- [Backend Setup & Deployment](./backend/README.md)
+
+## Support
+
+For technical details and configuration instructions, please see the respective README files for frontend and backend components.
