@@ -2,9 +2,32 @@ import React from 'react'
 
 function Home() {
   return (
-    <div className='bg-white border border-slate-200 rounded-lg p-6 shadow-sm'>
-        <h1 className='text-3xl font-semibold mb-4 text-slate-900 text-center'>Welcome to home</h1>
-        <p className='text-slate-700 leading-7'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi quis, animi culpa asperiores eaque numquam deserunt quos recusandae quas provident sapiente quidem officia exercitationem placeat ipsam laudantium neque assumenda commodi cumque expedita qui doloremque atque? Officia doloremque in veritatis perferendis laborum iure sequi numquam illum tempore. Velit nesciunt, beatae earum nulla nisi tempora id perferendis laborum distinctio, hic fugit quis suscipit deserunt. Quidem impedit, quas ex quasi obcaecati nesciunt voluptatum vel amet ab pariatur quaerat commodi optio modi, dolor non eligendi exercitationem veritatis, repellat provident. Reprehenderit eos atque autem illum ut molestias saepe in sunt consequuntur recusandae. Quod, at. Consectetur odio quis laboriosam magnam voluptatum totam tempora, voluptatem vitae quos recusandae? Magni voluptas quaerat repudiandae, velit saepe, optio magnam officia error voluptates consequuntur eos ducimus voluptatum earum odit quibusdam minus dolore autem temporibus quam animi. Fuga minus laborum nesciunt exercitationem minima nulla repellendus tempore quisquam totam, sit voluptate odio! Laboriosam corrupti architecto iusto consequatur? Neque quae odit tenetur, cum odio voluptates eius eveniet delectus, maiores veniam commodi vero exercitationem vitae quas temporibus impedit quaerat rem, blanditiis porro optio. Nostrum velit ut numquam ea hic nemo veniam et sapiente adipisci reprehenderit fugiat mollitia molestiae, animi vitae placeat! Excepturi quasi quidem nemo, doloremque totam ipsa blanditiis quis vel enim natus! Quisquam ea qui maiores impedit, suscipit assumenda illum nostrum magni tempore iusto minima error! Beatae facere doloribus amet ea, iure odio possimus dicta quia perspiciatis reiciendis. Minus modi tempora eveniet molestias rem dolorem laboriosam aliquid quia. Pariatur ab eum assumenda nesciunt beatae totam voluptates, rem soluta fugiat porro eaque nam possimus dolore molestias commodi necessitatibus quasi odio similique fuga. Expedita, velit quibusdam esse sequi dolores nesciunt recusandae voluptas molestiae porro corporis tempore suscipit ducimus error adipisci cupiditate! Optio modi voluptates esse veritatis sapiente, aperiam sint asperiores non dignissimos reprehenderit deleniti ullam recusandae?</p>
+    <div className='bg-white border border-slate-200 rounded-lg p-8 shadow-sm max-w-4xl mx-auto'>
+      <h1 className='text-3xl font-semibold mb-6 text-slate-900 text-center'>Welcome to the User Management Portal</h1>
+      
+      <p className='text-slate-700 leading-7 text-center mb-8 max-w-2xl mx-auto'>
+        This administrative portal is designed to streamline your user management workflows. With a clean interface and robust backend integration, you can efficiently manage your user directory, register new profiles, and maintain accurate records in real time.
+      </p>
+      
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 border-t border-slate-100 pt-8'>
+        <div className='p-5 border border-slate-150 rounded-lg bg-slate-50 hover:bg-slate-100 transition-colors duration-250'>
+          <div className='text-3xl mb-3'>👤</div>
+          <h3 className='font-semibold text-slate-800 mb-2'>Register Users</h3>
+          <p className='text-sm text-slate-600 leading-relaxed'>Quickly register new users with built-in validation for names, email addresses, dates of birth, and contact numbers.</p>
+        </div>
+        
+        <div className='p-5 border border-slate-150 rounded-lg bg-slate-50 hover:bg-slate-100 transition-colors duration-250'>
+          <div className='text-3xl mb-3'>📋</div>
+          <h3 className='font-semibold text-slate-800 mb-2'>User Directory</h3>
+          <p className='text-sm text-slate-600 leading-relaxed'>Browse your entire database of users in a responsive grid. Access individual profiles with a single click.</p>
+        </div>
+        
+        <div className='p-5 border border-slate-150 rounded-lg bg-slate-50 hover:bg-slate-100 transition-colors duration-250'>
+          <div className='text-3xl mb-3'>⚙️</div>
+          <h3 className='font-semibold text-slate-800 mb-2'>Manage Profiles</h3>
+          <p className='text-sm text-slate-600 leading-relaxed'>Drill down into individual user details. Perform real-time profile updates or delete records securely.</p>
+        </div>
+      </div>
     </div>
   )
 }
